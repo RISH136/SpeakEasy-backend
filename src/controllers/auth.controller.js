@@ -57,6 +57,7 @@ export async function signup(req, res) {
       // Cross-site cookie for Vercel ↔ Render requires SameSite=None and Secure in production
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
+      path: "/",
     });
 
     res.status(201).json({ success: true, user: newUser });
@@ -89,6 +90,7 @@ export async function login(req, res) {
       httpOnly: true,
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
+      path: "/",
     });
 
     res.status(200).json({ success: true, user });
@@ -99,7 +101,12 @@ export async function login(req, res) {
 }
 
 export function logout(req, res) {
-  res.clearCookie("jwt");
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+  });
   res.status(200).json({ success: true, message: "Logout successful" });
 }
 

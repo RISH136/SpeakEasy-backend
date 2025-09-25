@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 5001;
 
 
 
+// Ensure Express knows it's behind a proxy (Render) so secure cookies and protocol are handled correctly
+app.set("trust proxy", 1);
 app.use(
   cors({
     origin: 'https://speak-easy-frontend-eta.vercel.app',
