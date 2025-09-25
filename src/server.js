@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5001;
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://speakeasy-frontend-1.onrender.com",
     credentials: true, // allow frontend to send cookies
   })
 );
