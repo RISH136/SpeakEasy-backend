@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5001;
 
 app.use(
   cors({
-    origin: '*',
+    origin: 'speak-easy-frontend-eta.vercel.app',
     credentials: true, // allow frontend to send cookies
   })
 );
