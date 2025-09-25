@@ -19,7 +19,10 @@ const PORT = process.env.PORT || 5001;
 app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: 'https://speak-easy-frontend-eta.vercel.app',
+    origin: [
+      'https://speak-easy-frontend-eta.vercel.app',
+      'https://speakeasy-frontend-1.onrender.com'
+    ],
     credentials: true, // allow frontend to send cookies
   })
 );
